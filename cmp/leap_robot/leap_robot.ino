@@ -6,10 +6,14 @@ void setup(){
 	Serial.begin(9600);
 	Robot.begin();
 	Robot.beginTFT();
+	Robot.stroke(0, 0, 0);
+	Robot.text("Robot is initialized", 5, 5);
 }
 
 void loop() {
 	if(Serial.available()) {
+		Robot.stroke(0, 0, 0);
+		Robot.text("Serial is available.", 5, 5);
 		command(Serial.read() - '0');	// convert the character '1'-'9' to decimal 1-9
 		digitalWrite(ledPin, HIGH);
 	} else {

@@ -12,11 +12,11 @@ else
   LEAP_LIBRARY := ../lib/libLeap.dylib
 endif
 
-Sample: Sample.cpp
-	$(CXX) -std=c++0x -Wall -g -I../include Sample.cpp -o Sample $(LEAP_LIBRARY)
+gestures: gestures.cpp
+	$(CXX) -std=c++0x -Wall -g -I../include gestures.cpp -o gestures $(LEAP_LIBRARY)
 ifeq ($(OS), Darwin)
-	install_name_tool -change @loader_path/libLeap.dylib ../lib/libLeap.dylib Sample
+	install_name_tool -change @loader_path/libLeap.dylib ../lib/libLeap.dylib gestures
 endif
 
 clean:
-	rm -rf Sample Sample.dSYM
+	rm -rf gestures gestures.dSYM
